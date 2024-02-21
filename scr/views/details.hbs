@@ -1,0 +1,55 @@
+<main class="details">
+    <!-- Details page -->
+    <section id="details">
+        <div id="details-wrapper">
+            <p id="details-title">Name: {{product.name}}</p>
+            <div id="img-wrapper">
+                <img src="{{product.image}}" />
+            </div>
+            <div id="info-wrapper">
+                <table>
+                    <tr>
+                        <td>
+                            <p>
+                                Category: <span id="details-category">{{product.category}}</span>
+                            </p>
+                        </td>
+                        <td>
+                            <p>Color: <span id="details-color">{{product.color}}</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Location: <span id="details-location">{{product.location}}</span></p>
+                        </td>
+                        <td>
+                            <p>Formula: <span id="details-formula">{{product.formula}}</span></p>
+                        </td>
+                    </tr>
+                </table>
+                <p>Description: <span id="details-description">{{product.description}}</span></p>
+            </div>
+
+            <!--Edit and Delete are only for creator-->
+            {{#if isLoggedIn}}
+            {{#if isCreator}}
+            <div id="action-buttons"></div>
+
+
+
+
+            <a href="/product/{{product._id}}/edit" id="edit-btn">Edit</a>
+            <a href="/product/{{product._id}}/delete" id="delete-btn">Delete</a>
+            {{else}}
+            {{#unless isLiked}}
+            <a href="/{{product._id}}/like" id="like-btn">Like</a>
+            {{else}}
+            <p id="already-liked">You already liked this stone!</p>
+
+            {{/unless}}
+            {{/if}}
+            {{/if}}
+        </div>
+        </div>
+    </section>
+</main>
